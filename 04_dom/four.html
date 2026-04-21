@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit & Remove Elements</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    //  Non-optimized creation of an element 
+    function addLanguage(langName){
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("typescript")
+
+    // Optimized version to create an element
+    function addOptiLang(langName) {
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLang("golang")
+
+    // Edit1
+    const secondLang = document.querySelector('li:nth-child(2)')
+    //secondLang.innerHTML = "Mojo" //  non-optimize
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli)
+
+    // Edit2
+    const firstlang = document.querySelector('li:first-child')
+    firstlang.outerHTML = '<li>TypeScript</li>'
+
+    // remnove
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+
+    // to add Text in any element (using create is good for optimized)
+    // 1. createTextNode
+    // 2. textContent
+    // 3. innerHTML
+
+    // to select any element to use it 
+    // 1. querySelector
+
+    // to add the element in document 
+    // 1. appendChild()
+</script>
+</html>
