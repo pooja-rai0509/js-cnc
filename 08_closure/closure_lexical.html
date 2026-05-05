@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #212121;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    // Lexical Scoping
+    // function outer(){
+    //     let username = "pooja"
+        
+    //     function inner(){
+    //         let secret = "my123"
+    //         console.log("Inner" ,username);
+            
+    //     }
+    //     function innerTwo(){
+    //         console.log("InnerTwo " ,username);
+    //         console.log(secret);
+            
+    //     }
+    //     inner()
+    //     innerTwo()
+    // }
+    // outer()
+    // console.log("Too outer ",username);
+
+    // Closure
+    // full lexical scope returns when returns inner function from outer fuynction
+    // function outer(){
+    //     const name = "pooja"
+    //     function inner(){
+    //         console.log(name);
+            
+    //     }
+    //     return inner
+    // }
+
+    // const outerCall = outer()
+    // outerCall()
+    
+
+    // practical closure with button
+    // document.getElementById('orange').onclick = function () {
+    //     document.body.style.background = "orange"
+    // }
+
+    // document.getElementById('green').onclick = function () {
+    //     document.body.style.background = "green"
+    // }
+
+    // what if 50 buttons there & every click color change, 
+
+    function clickHandler(color) {
+        //document.body.style.background = `${color}`
+        return function (){
+            document.body.style.background = `${color}`
+        }
+
+    }
+
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+
+</script>
+</html>
